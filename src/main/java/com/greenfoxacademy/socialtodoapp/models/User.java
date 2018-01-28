@@ -1,7 +1,10 @@
-package com.greenfoxacademy.socialdotoapp.models;
+package com.greenfoxacademy.socialtodoapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,11 +18,14 @@ public class User {
   @Id
   private String username;
   private String password;
-  @OneToMany
+  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+  @Cascade(CascadeType.ALL)
   private List<Todo> todoList;
   
+  @ManyToMany(mappedBy = "userList")
+  private List<PublicTodo> publicTodoList;
+  
   public User(){
-    todoList = new ArrayList<>();
   }
   
   public User(String username, String password){

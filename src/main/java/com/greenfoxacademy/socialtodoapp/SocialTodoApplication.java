@@ -1,12 +1,15 @@
-package com.greenfoxacademy.socialdotoapp;
+package com.greenfoxacademy.socialtodoapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SocialdotoappApplication {
-
+public class SocialTodoApplication {
+	
+	
 	public static void main(String[] args) {
-		SpringApplication.run(SocialdotoappApplication.class, args);
+		SpringApplication.run(SocialTodoApplication.class, args);
 	}
+	
 }
+

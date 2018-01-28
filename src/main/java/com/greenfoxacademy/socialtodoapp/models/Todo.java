@@ -1,5 +1,6 @@
-package com.greenfoxacademy.socialdotoapp.models;
+package com.greenfoxacademy.socialtodoapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
 public class Todo {
   
   @Id
@@ -22,8 +24,10 @@ public class Todo {
   private boolean urgent;
   private boolean done;
   
-  @OneToOne
-  @JoinColumn(name = "user_id")
+  @ManyToOne(fetch = FetchType.LAZY)
   private User user;
   
+  public Todo(String title) {
+    this.title = title;
+  }
 }
